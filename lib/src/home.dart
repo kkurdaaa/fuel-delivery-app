@@ -7,6 +7,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home:  Scaffold(
       backgroundColor: Colors.amber,  
       appBar: AppBar(  
@@ -30,7 +31,7 @@ class Home extends StatelessWidget {
                         alignment: Alignment.center,
                         children: [
                           Ink.image(
-                            image: NetworkImage(
+                            image: AssetImage(
                                 mockData[index]["image"].toString()),
                             height: 200,
                             fit: BoxFit.cover,
