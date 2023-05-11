@@ -72,10 +72,8 @@ class _LogIn extends State<LogIn> {
                 padding: const EdgeInsets.all(10),
                 child: ElevatedButton(
                   child: const Text('Login',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold)),
-                  onPressed: () {
-                    Navigator.push(context,MaterialPageRoute(builder: (context) => const Home()),); 
-                    print(nameController.text);
-                    print(passwordController.text);
+                  onPressed: () {       
+                        Navigator.push(context,MaterialPageRoute(builder: (context) => const Home()),); 
                   },
                 )
             ),

@@ -1,14 +1,62 @@
 import 'package:flutter/material.dart';
 import 'package:grad/mock/mock.dart';
 import 'package:grad/src/bio.dart';
+import 'package:grad/src/profile.dart';
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  int _selectedIndex = 0;  
+   
+  void _onItemTapped(int index) {  
+    setState(() {  
+      _selectedIndex = index;  
+    });  
+  } 
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home:  Scaffold(
+      bottomNavigationBar: BottomNavigationBar(  
+        items: <BottomNavigationBarItem>[  
+          BottomNavigationBarItem(  
+            icon: IconButton(
+              icon: Icon(Icons.oil_barrel),
+              onPressed: (){
+                Navigator.push(context,MaterialPageRoute(builder: (context) => Home()),); 
+            },),  
+            label: 'Fuel',  
+            backgroundColor: Colors.green  
+          ),  
+          BottomNavigationBarItem(  
+            icon: Icon(Icons.car_repair),  
+            label: 'Stations',  
+            backgroundColor: Colors.yellow  
+          ),  
+          BottomNavigationBarItem(  
+            icon: IconButton(
+              icon: Icon(Icons.person),
+              onPressed: (){
+                Navigator.push(context,MaterialPageRoute(builder: (context) => userProfile()),);
+            },),
+            label: 'Account',  
+            backgroundColor: Colors.blue,  
+          ),  
+        ],  
+        type: BottomNavigationBarType.shifting,  
+        currentIndex: _selectedIndex,  
+        selectedItemColor: Colors.black,  
+        iconSize: 40,  
+        onTap: _onItemTapped,  
+        elevation: 5  
+      ),  
       backgroundColor: Colors.amber,  
       appBar: AppBar(  
         title: const Text('Speed Stop'),centerTitle: true,  
